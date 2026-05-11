@@ -88,7 +88,6 @@
                                 <section class="card mb-4" aria-labelledby="song1-title">
                                     <div class="card-body">
                                         <h4 class="card-title h5" id="song1-title">Song 1</h4>
-
                                         <div class="player mb-3" data-player data-song-name="song 1">
                                             <button type="button" class="btn btn-primary play-btn" aria-label="Play song 1" data-play>
                                                 <span aria-hidden="true">▶</span>
@@ -100,9 +99,8 @@
                                                     data-progress>
                                                 <span class="time-display" data-time>0:00 / 0:45</span>
                                             </div>
-                                            <audio preload="metadata" data-audio src="ai-music/songs/Breaking Rust - Walk My Walk (Lyrics).mp3'></audio>
+                                            <audio preload="metadata" data-audio src="../songs/Breaking Rust - Walk My Walk (Lyrics).mp3"></audio>
                                         </div>
-
                                         <fieldset>
                                             <legend class="h6">AI generated?</legend>
                                             <div role="radiogroup" aria-labelledby="song1-title">
@@ -123,7 +121,6 @@
                                 <section class="card mb-4" aria-labelledby="song2-title">
                                     <div class="card-body">
                                         <h4 class="card-title h5" id="song2-title">Song 2</h4>
-
                                         <div class="player mb-3" data-player data-song-name="song 2">
                                             <button type="button" class="btn btn-primary play-btn" aria-label="Play song 2" data-play>
                                                 <span aria-hidden="true">▶</span>
@@ -135,9 +132,8 @@
                                                     data-progress>
                                                 <span class="time-display" data-time>0:00 / 0:45</span>
                                             </div>
-                                            <audio preload="metadata" data-audio src="ai-music/songs/SpotiMate.io - Strings of Fate - Let Babylon Burn.mp3"></audio>
+                                            <audio preload="metadata" data-audio src="../songs/SpotiMate.io - Strings of Fate - Let Babylon Burn.mp3"></audio>
                                         </div>
-
                                         <fieldset>
                                             <legend class="h6">AI generated?</legend>
                                             <div role="radiogroup" aria-labelledby="song2-title">
@@ -158,7 +154,6 @@
                                 <section class="card mb-4" aria-labelledby="song3-title">
                                     <div class="card-body">
                                         <h4 class="card-title h5" id="song3-title">Song 3</h4>
-
                                         <div class="player mb-3" data-player data-song-name="song 3">
                                             <button type="button" class="btn btn-primary play-btn" aria-label="Play song 3" data-play>
                                                 <span aria-hidden="true">▶</span>
@@ -170,9 +165,8 @@
                                                     data-progress>
                                                 <span class="time-display" data-time>0:00 / 0:45</span>
                                             </div>
-                                            <audio preload="metadata" data-audio src="ai-music/songs/SpotiMate.io - Through My Soul - Enlly.mp3"></audio>
+                                            <audio preload="metadata" data-audio src="../songs/SpotiMate.io - Through My Soul - Enlly.mp3"></audio>
                                         </div>
-
                                         <fieldset>
                                             <legend class="h6">AI generated?</legend>
                                             <div role="radiogroup" aria-labelledby="song3-title">
@@ -224,7 +218,7 @@
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="scripts.js"></script>
 
         <script>
             function fmt(s) {
@@ -244,13 +238,9 @@
                 const timeDisplay = player.querySelector('[data-time]');
                 const songName = player.dataset.songName || 'song';
 
-                // Drive UI from the audio's OWN events — UI always reflects real state
                 audio.addEventListener('play', () => {
                     playIcon.textContent = '❚❚';
                     playBtn.setAttribute('aria-label', `Pause ${songName}`);
-
-                    // Pause every other audio so only one plays at a time;
-                    // each of their 'pause' listeners will sync their own buttons.
                     document.querySelectorAll('[data-audio]').forEach(a => {
                         if (a !== audio && !a.paused) a.pause();
                     });
@@ -269,7 +259,6 @@
                 audio.addEventListener('timeupdate', () => {
                     progress.value = Math.min(audio.currentTime, MAX_SECONDS);
                     timeDisplay.textContent = `${fmt(audio.currentTime)} / 0:45`;
-
                     if (audio.currentTime >= MAX_SECONDS) {
                         audio.pause();
                         audio.currentTime = 0;
@@ -278,7 +267,6 @@
                     }
                 });
 
-                // Button only commands the audio; it doesn't touch UI directly
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) {
                         audio.play().catch(err => console.error('Playback failed:', err));
