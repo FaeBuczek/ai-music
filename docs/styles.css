@@ -104,6 +104,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.side-image {
+  float: right;
+  width: 15.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0.6rem;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -113,7 +120,7 @@ hr {
 }
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
