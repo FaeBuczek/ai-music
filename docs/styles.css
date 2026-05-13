@@ -92,6 +92,9 @@
 }
 
 body {
+  display: grid;
+  grid-template-rows: auto 1fr auto; 
+  min-height: 100dvh;
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -102,6 +105,38 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding-bottom: 3.75rem;
+}
+
+section.py-5,
+section.bg-light.py-5 {
+  min-height: calc(100vh - 5rem); 
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.4;
+}
+footer .container {
+  min-height: 3.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
 }
 
 .side-image {
